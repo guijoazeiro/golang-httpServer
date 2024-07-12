@@ -98,7 +98,7 @@ func main() {
 
 	go func() {
 		log.Printf("Starting on https://127.0.0.1:443")
-		if err := server.ListenAndServeTLS("", ""); err != nil {
+		if err := server.ListenAndServeTLS("../../keys/cert.pem", "../../keys/key.pem"); err != nil && err != http.ErrServerClosed {
 			log.Fatalf("Failed to listen and serve: %v", err)
 		}
 	}()
